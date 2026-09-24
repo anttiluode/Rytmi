@@ -1,0 +1,445 @@
+{
+ "cell": {
+  "P": 2.6,
+  "A": 2.4,
+  "tau": 0.01,
+  "tau_a": 0.05,
+  "ja": 3.0,
+  "sd": 0.15
+ },
+ "no_theta_constant_inhibition": 0.6,
+ "main": {
+  "asymmetric": {
+   "asymmetry_index": 0.9964428990854688,
+   "forward_drive_per_spike": 1.1902932811641314,
+   "mean_forward_reach_items": 2.952664397564179,
+   "replay": {
+    "forward_only_in_order": 0.9515151515151515,
+    "forward_out_of_order": 0.030303030303030304,
+    "any_backward": 0.0,
+    "none": 0.01818181818181818
+   },
+   "spikes_per_cell_per_lap": 11.432500000000001,
+   "precession": {
+    "profile_bins_s": [
+     -1.0,
+     -0.8,
+     -0.6000000000000001,
+     -0.40000000000000013,
+     -0.20000000000000018,
+     -2.220446049250313e-16,
+     0.19999999999999973,
+     0.3999999999999997
+    ],
+    "first_spike_mean_phase": [
+     0.5082870232027537,
+     0.4755345338900335,
+     0.4112101870061326,
+     0.3524720877973349,
+     0.33051274211075177,
+     0.3664407274369617,
+     0.464199560602917,
+     0.5450390827090745
+    ],
+    "entering_fit": {
+     "slope_cycles_per_unit": -0.2749999999999999,
+     "resultant": 0.9412597529956678,
+     "rho": 0.7610974042750249
+    },
+    "empty_arc_fraction": 0.425,
+    "phase_histogram": [
+     0.0,
+     0.00021867483052700635,
+     0.00021867483052700635,
+     0.0,
+     0.00021867483052700635,
+     0.00021867483052700635,
+     0.002186748305270063,
+     0.0037174721189591076,
+     0.007434944237918215,
+     0.013339164662147386,
+     0.025147605510605728,
+     0.037612070850645093,
+     0.05751148042860267,
+     0.07347474305707413,
+     0.09053137983818063,
+     0.10955609009403018,
+     0.09774764924557183,
+     0.09424885195713974,
+     0.08725125738027553,
+     0.0830964356002624,
+     0.06778919746337196,
+     0.05554340695385961,
+     0.038486770172753114,
+     0.019462059916903564,
+     0.012027115678985349,
+     0.010059042204242292,
+     0.005029521102121146,
+     0.002624097966324076,
+     0.000656024491581019,
+     0.002624097966324076,
+     0.000656024491581019,
+     0.0004373496610540127,
+     0.00021867483052700635,
+     0.0004373496610540127,
+     0.00021867483052700635,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "symmetric": {
+   "asymmetry_index": 0.9450362365950769,
+   "forward_drive_per_spike": 0.34517536194296233,
+   "mean_forward_reach_items": 2.781127929475822,
+   "replay": {
+    "forward_only_in_order": 0.06060606060606061,
+    "forward_out_of_order": 0.7757575757575758,
+    "any_backward": 0.09696969696969697,
+    "none": 0.06666666666666667
+   },
+   "spikes_per_cell_per_lap": 10.765,
+   "precession": {
+    "profile_bins_s": [
+     -1.0,
+     -0.8,
+     -0.6000000000000001,
+     -0.40000000000000013,
+     -0.20000000000000018,
+     -2.220446049250313e-16,
+     0.19999999999999973,
+     0.3999999999999997
+    ],
+    "first_spike_mean_phase": [
+     null,
+     0.5309760588817534,
+     0.4853955312795453,
+     0.4089628723394776,
+     0.33629055393541696,
+     0.33898982001053407,
+     0.3880194779917556,
+     0.4829472502389369
+    ],
+    "entering_fit": {
+     "slope_cycles_per_unit": -0.355,
+     "resultant": 0.9479238279675488,
+     "rho": 0.7980235203928069
+    },
+    "empty_arc_fraction": 0.45,
+    "phase_histogram": [
+     0.00023223409196470042,
+     0.00046446818392940084,
+     0.0,
+     0.0,
+     0.00023223409196470042,
+     0.0006967022758941013,
+     0.002786809103576405,
+     0.0025545750116117046,
+     0.006967022758941012,
+     0.01672085462145843,
+     0.019739897816999537,
+     0.04040873200185787,
+     0.0559684161634928,
+     0.08128193218764515,
+     0.09126799814212726,
+     0.10450534138411519,
+     0.09939619136089178,
+     0.09568044588945657,
+     0.08987459359033906,
+     0.07524384579656293,
+     0.058522991175104504,
+     0.0566651184393869,
+     0.04110543427775198,
+     0.024849047840222946,
+     0.013469577333952624,
+     0.008592661402693916,
+     0.004876915931258709,
+     0.003947979563399907,
+     0.001625638643752903,
+     0.0011611704598235022,
+     0.0009289363678588017,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.00023223409196470042
+    ]
+   }
+  },
+  "no_theta": {
+   "asymmetry_index": 0.4393303479421028,
+   "forward_drive_per_spike": 0.06341327813333432,
+   "mean_forward_reach_items": 2.6237690686848416,
+   "replay": {
+    "forward_only_in_order": 0.09090909090909091,
+    "forward_out_of_order": 0.11515151515151516,
+    "any_backward": 0.7454545454545455,
+    "none": 0.048484848484848485
+   },
+   "spikes_per_cell_per_lap": 11.309999999999999
+  },
+  "shuffled": {
+   "asymmetry_index": 0.17466571487012433,
+   "forward_drive_per_spike": 0.030637748552329883,
+   "mean_forward_reach_items": 3.4702421243093795,
+   "replay": {
+    "forward_only_in_order": 0.0,
+    "forward_out_of_order": 0.0,
+    "any_backward": 0.14545454545454545,
+    "none": 0.8545454545454545
+   },
+   "spikes_per_cell_per_lap": 11.315000000000001
+  }
+ },
+ "seeds": {
+  "1": {
+   "asymmetric": {
+    "forward_only_in_order": 0.8606060606060606,
+    "any_backward": 0.006060606060606061,
+    "asymmetry": 0.9971845743487,
+    "spikes_per_cell_per_lap": 11.575
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.3696969696969697,
+    "any_backward": 0.21212121212121213,
+    "asymmetry": 0.9460940153475065,
+    "spikes_per_cell_per_lap": 10.8575
+   },
+   "no_theta": {
+    "forward_only_in_order": 0.3696969696969697,
+    "any_backward": 0.41818181818181815,
+    "asymmetry": 0.34158249408675967,
+    "spikes_per_cell_per_lap": 11.3225
+   },
+   "shuffled": {
+    "forward_only_in_order": 0.01818181818181818,
+    "any_backward": 0.9212121212121213,
+    "asymmetry": 0.1715612181190824,
+    "spikes_per_cell_per_lap": 11.4925
+   }
+  },
+  "2": {
+   "asymmetric": {
+    "forward_only_in_order": 0.7878787878787878,
+    "any_backward": 0.0,
+    "asymmetry": 0.9975889269929937,
+    "spikes_per_cell_per_lap": 11.352500000000001
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.2909090909090909,
+    "any_backward": 0.030303030303030304,
+    "asymmetry": 0.9667529111504568,
+    "spikes_per_cell_per_lap": 10.76
+   },
+   "no_theta": {
+    "forward_only_in_order": 0.048484848484848485,
+    "any_backward": 0.8121212121212121,
+    "asymmetry": 0.2598017633586766,
+    "spikes_per_cell_per_lap": 11.2875
+   },
+   "shuffled": {
+    "forward_only_in_order": 0.0,
+    "any_backward": 0.4727272727272727,
+    "asymmetry": 0.26328401282860986,
+    "spikes_per_cell_per_lap": 11.432500000000001
+   }
+  },
+  "3": {
+   "asymmetric": {
+    "forward_only_in_order": 0.8666666666666667,
+    "any_backward": 0.0,
+    "asymmetry": 0.9985016352852335,
+    "spikes_per_cell_per_lap": 11.5875
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.07272727272727272,
+    "any_backward": 0.030303030303030304,
+    "asymmetry": 0.954894421213096,
+    "spikes_per_cell_per_lap": 10.92
+   },
+   "no_theta": {
+    "forward_only_in_order": 0.048484848484848485,
+    "any_backward": 0.4303030303030303,
+    "asymmetry": 0.5723665516206161,
+    "spikes_per_cell_per_lap": 11.2575
+   },
+   "shuffled": {
+    "forward_only_in_order": 0.03636363636363636,
+    "any_backward": 0.5151515151515151,
+    "asymmetry": 0.2554722129848753,
+    "spikes_per_cell_per_lap": 11.5125
+   }
+  }
+ },
+ "robustness": {
+  "P2.2_A1.6": {
+   "asymmetric": {
+    "forward_only_in_order": 0.8121212121212121,
+    "any_backward": 0.06060606060606061,
+    "spikes_per_cell_per_lap": 10.2,
+    "empty_arc_fraction": 0.375
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.14545454545454545,
+    "any_backward": 0.09696969696969697,
+    "spikes_per_cell_per_lap": 9.629166666666666,
+    "empty_arc_fraction": 0.275
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.8303030303030303,
+    "any_backward": 0.06060606060606061
+   }
+  },
+  "P2.2_A2.4": {
+   "asymmetric": {
+    "forward_only_in_order": 0.9393939393939394,
+    "any_backward": 0.0,
+    "spikes_per_cell_per_lap": 9.45,
+    "empty_arc_fraction": 0.55
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.024242424242424242,
+    "any_backward": 0.1393939393939394,
+    "spikes_per_cell_per_lap": 8.95,
+    "empty_arc_fraction": 0.525
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.9393939393939394,
+    "any_backward": 0.0
+   }
+  },
+  "P2.2_A3.2": {
+   "asymmetric": {
+    "forward_only_in_order": 0.806060606060606,
+    "any_backward": 0.0,
+    "spikes_per_cell_per_lap": 9.05,
+    "empty_arc_fraction": 0.625
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.04242424242424243,
+    "any_backward": 0.19393939393939394,
+    "spikes_per_cell_per_lap": 8.625,
+    "empty_arc_fraction": 0.625
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.806060606060606,
+    "any_backward": 0.0
+   }
+  },
+  "P2.6_A1.6": {
+   "asymmetric": {
+    "forward_only_in_order": 0.23636363636363636,
+    "any_backward": 0.0,
+    "spikes_per_cell_per_lap": 12.920833333333334,
+    "empty_arc_fraction": 0.175
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.04242424242424243,
+    "any_backward": 0.6909090909090909,
+    "spikes_per_cell_per_lap": 12.241666666666667,
+    "empty_arc_fraction": 0.25
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.24848484848484848,
+    "any_backward": 0.0
+   }
+  },
+  "P2.6_A2.4": {
+   "asymmetric": {
+    "forward_only_in_order": 0.8909090909090909,
+    "any_backward": 0.0,
+    "spikes_per_cell_per_lap": 11.579166666666667,
+    "empty_arc_fraction": 0.45
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.048484848484848485,
+    "any_backward": 0.030303030303030304,
+    "spikes_per_cell_per_lap": 10.925,
+    "empty_arc_fraction": 0.475
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.8848484848484849,
+    "any_backward": 0.0
+   }
+  },
+  "P2.6_A3.2": {
+   "asymmetric": {
+    "forward_only_in_order": 0.9272727272727272,
+    "any_backward": 0.0,
+    "spikes_per_cell_per_lap": 10.8375,
+    "empty_arc_fraction": 0.475
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.1393939393939394,
+    "any_backward": 0.01818181818181818,
+    "spikes_per_cell_per_lap": 10.245833333333334,
+    "empty_arc_fraction": 0.525
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.9272727272727272,
+    "any_backward": 0.0
+   }
+  },
+  "P3.0_A1.6": {
+   "asymmetric": {
+    "forward_only_in_order": 0.006060606060606061,
+    "any_backward": 0.18181818181818182,
+    "spikes_per_cell_per_lap": 16.2,
+    "empty_arc_fraction": 0.175
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.1393939393939394,
+    "any_backward": 0.4,
+    "spikes_per_cell_per_lap": 15.3,
+    "empty_arc_fraction": 0.175
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.0,
+    "any_backward": 0.32727272727272727
+   }
+  },
+  "P3.0_A2.4": {
+   "asymmetric": {
+    "forward_only_in_order": 0.8545454545454545,
+    "any_backward": 0.0,
+    "spikes_per_cell_per_lap": 14.266666666666666,
+    "empty_arc_fraction": 0.375
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.07878787878787878,
+    "any_backward": 0.49696969696969695,
+    "spikes_per_cell_per_lap": 13.6,
+    "empty_arc_fraction": 0.375
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.8545454545454545,
+    "any_backward": 0.0
+   }
+  },
+  "P3.0_A3.2": {
+   "asymmetric": {
+    "forward_only_in_order": 0.8606060606060606,
+    "any_backward": 0.0,
+    "spikes_per_cell_per_lap": 13.033333333333335,
+    "empty_arc_fraction": 0.45
+   },
+   "symmetric": {
+    "forward_only_in_order": 0.09696969696969697,
+    "any_backward": 0.21818181818181817,
+    "spikes_per_cell_per_lap": 12.395833333333332,
+    "empty_arc_fraction": 0.45
+   },
+   "asymmetric_local_gate_0.3": {
+    "forward_only_in_order": 0.8606060606060606,
+    "any_backward": 0.0
+   }
+  }
+ }
+}
