@@ -2,7 +2,7 @@
 
 *Rytmi* is Finnish for rhythm. This repo is where the TATWATASW line becomes one machine: a brain-inspired sequence learner that works in time windows and phases instead of positions and indices. It learns order with local rules, in one pass, with a fixed-size state and no backprop.
 
-Every step is measured separately and each has a control that should fail. Run `python r1_emergent_precession.py` (about a minute), then `python make_figure_r1.py`.
+Every step is measured separately and each has a control that should fail. Run `python r1_emergent_precession.py` (about a minute), then `python make_figure_r1.py`. For G0: `python g0_chaining.py` (about a minute), then `python make_figure_g0.py`. The TATWATASW folder holds the earlier E4 code this builds on.
 
 ## The machine, and what is measured so far
 
@@ -14,7 +14,7 @@ Every step is measured separately and each has a control that should fail. Run `
 | **Write** | Pairwise STDP writes the within-cycle order into cell-to-cell weights. | measured, TATWATASW E3 |
 | **Local phase** | Two leaky traces of the local theta give each synapse its own phase estimate (fast − slow and slow, a fixed 2×2 readout). | measured, TATWATASW E4 and AnotherOddThing v5 |
 | **Read** | Cue one cell; the written chain replays forward, in order. | measured (replay grid of 165 settings) |
-| **Chain** | Re-cue on replay so a one-to-two-item reach becomes a long sequence. | next (G0) |
+| **Chain** | Replay the whole learned sequence from one cue, and keep it in order under noise. | **measured here (G0): one cue carries 80 items; re-cueing each theta cycle is what keeps it in order under noise** |
 
 ## R1 — phase precession emerges
 
@@ -75,15 +75,70 @@ The chain **plateau → asymmetric field → rhythmic inhibition → emergent pr
 - **"Empty arc"** is the widest part of the cycle where the spike density falls below 10% of uniform. It is a descriptive measure, not a model parameter.
 - **The replay network and its 165-setting grid** are TATWATASW's, unchanged.
 
+## G0 — chaining: one cue, a whole lap, and what noise does to it
+
+![G0](g0.png)
+
+The plan was to re-cue on replay, because TATWATASW E3's weights reached only 1.2–1.4 items forward. R1's emergent weights reach about 3 items. So the first question was whether re-cueing is needed at all.
+
+**A — one cue replays the whole lap.** Learn R1's machine unchanged on laps of 20, 40 and 80 items, cue item 0 once, add no noise, and score all 165 replay settings.
+
+| lap length | full lap replayed in order | median in-order reach | replay speed |
+|---|---|---|---|
+| 20 | 0.77 | 19 | 15 ms/item |
+| 40 | 0.64 | 39 | 15 ms/item |
+| 80 | 0.62 | 79 | 10 ms/item |
+| 40, symmetric field | 0.00 | 4 | |
+| 40, no theta (rate matched) | 0.00 | 0 | |
+| 40, phase-shuffled | 0.00 | 35 | |
+
+- **The replay is a travelling wave.** Each written link reaches about 3 items, so activity keeps itself going. No re-cue is needed for length.
+- **It runs 13–20× faster than the sequence was experienced** (200 ms per item when learned). That is the same order of compression reported for hippocampal replay.
+- **None of R1's controls can replay a 40-item lap in order.**
+
+**B — noise.** White noise is added to every cell's drive at every 5 ms step. Two ways of reading the chain are compared, each on its own working settings (those where its noiseless 20-item replay is fully in order; 127 of 165 for both), over three noise seeds:
+
+- **one cue:** the wave runs on by itself.
+- **re-cue each theta cycle:** 75 ms open, then 50 ms of dead time with all activity silenced. The next cue is the last item that peaked in the previous cycle.
+
+| full chain in order | noise 0 | 0.1 | 0.2 | 0.3 | 0.4 |
+|---|---|---|---|---|---|
+| 20 items, one cue | 1.00 | 0.99 | 0.91 | 0.72 | 0.46 |
+| 20 items, re-cue | 1.00 | 0.97 | 0.94 | **0.89** | **0.80** |
+| 40 items, one cue | 0.83 | 0.81 | 0.71 | 0.44 | 0.22 |
+| 40 items, re-cue | 0.83 | 0.83 | 0.81 | **0.73** | **0.62** |
+| 80 items, one cue | **0.80** | **0.63** | 0.32 | 0.18 | 0.10 |
+| 80 items, re-cue | 0.57 | 0.54 | **0.53** | **0.48** | **0.33** |
+
+**C — what the errors are.** At the first out-of-order item, I checked where it sits relative to the front of the replay.
+
+- **Starting at item 0 (noise 0.3):** about two-thirds of errors are local swaps 1–5 items behind the front. The other third are items far behind it.
+- **Starting at item 40,** where every cell behind the cue is untouched: 93% of errors are far behind, a median of 33 items back.
+- **So the main error is a second wave igniting somewhere else,** in excitable cells the front isn't occupying. Adaptation normally protects the cells the wave has just passed. Once that wears off (tau 0.25 s), or if the cells were never visited, noise can start a new wave there.
+- **That is why the one-cue wave's error rate grows along the chain.** Per item, it rises from 0.002 over items 10–40 to 0.029 over items 40–79 (noise 0.3), because the recovered territory behind the front keeps growing.
+- **The dead time kills these ignitions every cycle,** before they grow. With re-cueing, the late-chain rate stays at 0.007 per item. From item 40 it's 0.0020 against 0.0093 for one cue.
+
+**What G0 means.**
+
+- **Length was never the problem.** R1's learned weights carry an 80-item sequence from a single cue, compressed about 15×.
+- **The problem is spurious waves,** and the rhythm's dead time is what suppresses them. That gives the dead time a second job. In learning (TATWATASW E3, R1) it keeps one compressed sequence from wrapping into the next. In recall (G0) it stops noise from starting a second replay behind the first.
+- **Re-cueing has a cost.** Without noise, the 80-item re-cue does worse (0.57 against 0.80). At low thresholds, a re-cue after about 50 items can re-ignite an earlier stretch (typically 15–40 items back), presumably where adaptation has worn off. That is the same error in a deterministic form. The crossover is around noise 0.15 at 80 items: below it, one cue is better; above it, re-cueing is much better.
+
+**Ledger (G0).**
+
+- **About 20% of settings can't launch the 80-item lap from item 0** in either mode. The first item has only forward partners, and all weights are normalized to the matrix's single largest weight. This is an edge effect of the setup, not of chaining.
+- **Each mode's working settings were chosen on its own noiseless 20-item replay.** Longer laps reuse those settings unchanged.
+- **Noise is additive and white on the replay network's drive.** The replay network is TATWATASW's rate model with adaptation, not R1's spiking cells. Learning uses the spiking model; recall does not.
+- **The re-cue rule** ("the last item that peaked") and the 75/50 ms split are my choices, not swept.
+
 ## Next gates
 
-- **G0 — chaining.** Re-cue on replay. Does iterated one-step replay hold order over 8–16 items, and where does it compound into errors?
 - **G1 — one-shot capacity.** Show K new sequences once each; recall versus K at a fixed state size. Baseline: an asymmetric Hopfield sequence memory (Sompolinsky & Kanter 1986).
 - **G2 — plateaus that choose themselves.** Replace "one plateau per cell at its place" with plateaus triggered by local surprise (prediction error). That turns the field step into learning instead of an input.
 
 ## Lineage
 
-AnotherOddThing v5 (fast − slow separates entering from leaving at the same level) → TATWATASW E1–E3 (plateau writes predictive fields; rhythm plus dead time writes order) → TATWATASW E4 (two traces as a local phase; dead time made locally; direction without rhythm) → **Rytmi R1** (precession emerges from plateau-written drive against rhythmic inhibition, and plain STDP writes ordered replay from it).
+AnotherOddThing v5 (fast − slow separates entering from leaving at the same level) → TATWATASW E1–E3 (plateau writes predictive fields; rhythm plus dead time writes order) → TATWATASW E4 (two traces as a local phase; dead time made locally; direction without rhythm) → **Rytmi R1** (precession emerges from plateau-written drive against rhythmic inhibition, and plain STDP writes ordered replay from it) → **Rytmi G0** (one cue replays an 80-item lap as a compressed wave; the dead time suppresses spurious second waves under noise).
 
 ## References
 
